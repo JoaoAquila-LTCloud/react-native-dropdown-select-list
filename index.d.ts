@@ -257,6 +257,16 @@ export interface MultipleSelectListProps  {
     * Additional styles for label
     */
     labelStyles?: TextStyle,
+
+    /**
+     * Dropdown selected section's text
+     */
+    selectedLabel?: string,
+
+    /**
+    * Show/hide selected dropdown selected section
+    */
+    showSelected?: boolean,
 }
 
 declare class MultipleSelectList extends React.Component<MultipleSelectListProps> {}
