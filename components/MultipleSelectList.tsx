@@ -44,7 +44,8 @@ const MultipleSelectList: React.FC<MultipleSelectListProps> = ({
         save = 'key',
         dropdownShown = false,
         selectedLabel = "Selected",
-        showSelected = true
+        showSelected = true,
+        defaultOption = []
     }) => {
 
     const oldOption = React.useRef(null)
@@ -109,6 +110,31 @@ const MultipleSelectList: React.FC<MultipleSelectListProps> = ({
 
 
 
+    React.useEffect(() => {
+        if(defaultOption.length > 0 && _firstRender){
+            defaultOption.forEach((item: any) => {
+                let key = item.key ?? item.value ?? item;
+                let value = item.value ?? item;
+
+                if(save === 'value'){
+                    setSelected((val: any) => {
+                        
+                        let temp = [...new Set([...val,value])];
+                        return temp;
+                    })
+                }else{
+                    setSelected((val: any) => {
+                        let temp = [...new Set([...val,key])];
+                        return temp;
+                    })
+                }
+                setSelectedVal((val: any )=> {
+                    let temp = [...new Set([...val,value])];
+                    return temp;
+                })
+            });
+        }
+    },[defaultOption])
 
 
 
