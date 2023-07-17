@@ -290,7 +290,6 @@ const MultipleSelectList: React.FC<MultipleSelectListProps> = ({
                                                             return temp;
                                                         });
                                                         
-                                                        // onSelect()
                                                     }else{
                                                         if(save === 'value'){
                                                             setSelected((val: any) => {
