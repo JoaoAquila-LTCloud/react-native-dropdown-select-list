@@ -36,7 +36,8 @@ const SelectList: React.FC<SelectListProps> =  ({
         onSelect = () => {},
         save = 'key',
         dropdownShown = false,
-        fontFamily
+        fontFamily,
+        resetState = false
     }) => {
 
     const oldOption = React.useRef(null)
@@ -207,16 +208,22 @@ const SelectList: React.FC<SelectListProps> =  ({
                                     }else{
                                         return(
                                             <TouchableOpacity style={[styles.option,dropdownItemStyles]} key={index} onPress={ () => {
-                                                if(save === 'value'){
-                                                    setSelected(value);
-                                                }else{
-                                                    setSelected(key)
+                                                if(resetState == true && (key == '' || value == '')) {
+                                                    setSelected(undefined)
+                                                    setSelectedVal("")   
+                                                } else {
+                                                    if(save === 'value'){
+                                                        setSelected(value);
+                                                    }else{
+                                                        setSelected(key)
+                                                    }
+    
+                                                    setSelectedVal(value);
                                                 }
-                                                
-                                                setSelectedVal(value)
+
                                                 slideup()
                                                 setTimeout(() => {setFilteredData(data)}, 800)
-                                                
+                                            
                                             }}>
                                                 <Text style={[{fontFamily},dropdownTextStyles]}>{value}</Text>
                                             </TouchableOpacity>

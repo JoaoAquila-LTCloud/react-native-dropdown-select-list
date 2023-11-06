@@ -110,6 +110,11 @@ export interface SelectListProps  {
     *  Pass any JSX to this prop like Text, Image or Icon to show instead of close icon
     */
     closeicon?: JSX.Element,
+
+    /**
+     * If key or value is empty, it should reset the field to its initial state (shows placeholder and return empty) in case this prop is true.
+     */
+    resetState?: boolean
 }
 
 
