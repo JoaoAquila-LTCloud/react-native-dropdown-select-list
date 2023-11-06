@@ -209,7 +209,7 @@ const SelectList: React.FC<SelectListProps> =  ({
                                         return(
                                             <TouchableOpacity style={[styles.option,dropdownItemStyles]} key={index} onPress={ () => {
                                                 if(resetState == true && (key == '' || value == '')) {
-                                                    setSelected(undefined)
+                                                    setSelected('')
                                                     setSelectedVal("")   
                                                 } else {
                                                     if(save === 'value'){
@@ -223,7 +223,6 @@ const SelectList: React.FC<SelectListProps> =  ({
 
                                                 slideup()
                                                 setTimeout(() => {setFilteredData(data)}, 800)
-                                            
                                             }}>
                                                 <Text style={[{fontFamily},dropdownTextStyles]}>{value}</Text>
                                             </TouchableOpacity>
