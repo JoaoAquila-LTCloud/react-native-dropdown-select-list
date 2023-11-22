@@ -10,16 +10,6 @@ import {
   TextInput,
   Keyboard,
 } from "react-native";
-    View,
-    Text,
-    StyleSheet,
-    Image,
-    TouchableOpacity,
-    ScrollView,
-    Animated,
-    TextInput,
-    Keyboard
-} from 'react-native';
 
 import { SelectListProps } from "..";
 
