@@ -47,7 +47,8 @@ const MultipleSelectList: React.FC<MultipleSelectListProps> = ({
         dropdownShown = false,
         selectedLabel = "Selected",
         showSelected = true,
-        defaultOption = []
+        defaultOption = [],
+        disabled = false,
     }) => {
 
     const oldOption = React.useRef(null)
@@ -60,23 +61,26 @@ const MultipleSelectList: React.FC<MultipleSelectListProps> = ({
 
 
     const slidedown = () => {
-        setDropdown(true)
+        if(!disabled) {
+            setDropdown(true)
         
-        Animated.timing(animatedvalue,{
-            toValue:height,
-            duration:500,
-            useNativeDriver:false,
-            
-        }).start()
+            Animated.timing(animatedvalue,{
+                toValue:height,
+                duration:500,
+                useNativeDriver:false,
+                
+            }).start()
+        }
     }
     const slideup = () => {
-        
-        Animated.timing(animatedvalue,{
-            toValue:0,
-            duration:500,
-            useNativeDriver:false,
-            
-        }).start(() => setDropdown(false))
+        if(!disabled) {
+            Animated.timing(animatedvalue,{
+                toValue:0,
+                duration:500,
+                useNativeDriver:false,
+                
+            }).start(() => setDropdown(false))
+        }
     }
 
     React.useEffect( () => {

@@ -114,7 +114,12 @@ export interface SelectListProps  {
     /**
      * If key or value is empty, it should reset the field to its initial state (shows placeholder and return empty) in case this prop is true.
      */
-    resetState?: boolean
+    resetState?: boolean,
+
+    /**
+     * Its like a normal input disabled prop. It prevents the slideDown/slideUp functions.
+     */
+    disabled?: boolean,
 }
 
 
@@ -270,6 +275,11 @@ export interface MultipleSelectListProps  {
     * Show/hide selected dropdown selected section
     */
     showSelected?: boolean,
+
+    /**
+     * Its like a normal input disabled prop. It prevents the slideDown/slideUp functions.
+     */
+    disabled?: boolean,
 }
 
 declare class MultipleSelectList extends React.Component<MultipleSelectListProps> {}

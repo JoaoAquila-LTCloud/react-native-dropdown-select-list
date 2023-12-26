@@ -39,6 +39,7 @@ const SelectList: React.FC<SelectListProps> = ({
   dropdownShown = false,
   fontFamily,
   resetState = false,
+  disabled = false,
 }) => {
   const oldOption = React.useRef(null);
   const [_firstRender, _setFirstRender] = React.useState<boolean>(true);
@@ -50,19 +51,23 @@ const SelectList: React.FC<SelectListProps> = ({
   const styles = getStyles(selectedval);
 
   const slidedown = () => {
-    setDropdown(true);
-    Animated.timing(animatedvalue, {
-      toValue: height,
-      duration: 500,
-      useNativeDriver: false,
-    }).start();
+    if(!disabled) {
+      setDropdown(true);
+      Animated.timing(animatedvalue, {
+        toValue: height,
+        duration: 500,
+        useNativeDriver: false,
+      }).start();
+    }
   };
   const slideup = () => {
-    Animated.timing(animatedvalue, {
-      toValue: 0,
-      duration: 500,
-      useNativeDriver: false,
-    }).start(() => setDropdown(false));
+    if(disabled) {
+      Animated.timing(animatedvalue, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: false,
+      }).start(() => setDropdown(false));
+    }
   };
 
   React.useEffect(() => {
