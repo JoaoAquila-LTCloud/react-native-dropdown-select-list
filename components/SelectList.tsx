@@ -61,7 +61,7 @@ const SelectList: React.FC<SelectListProps> = ({
     }
   };
   const slideup = () => {
-    if(disabled) {
+    if(!disabled) {
       Animated.timing(animatedvalue, {
         toValue: 0,
         duration: 500,
